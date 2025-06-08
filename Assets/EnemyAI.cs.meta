@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: 40f1445b5734b084e90552be37c67850
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - target: {instanceID: 0}
+  - bgmSource: {instanceID: 0}
+  - attackBGM: {fileID: 8300000, guid: f41a225739809f3479aec08799e0cb73, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

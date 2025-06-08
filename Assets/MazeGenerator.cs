@@ -11,7 +11,7 @@ using UnityEditor;
 [RequireComponent(typeof(NavMeshSurface))]
 public class MazeGenerator : MonoBehaviour
 {
-  
+
     public int width = 11;
     public int height = 11;
 
@@ -24,15 +24,15 @@ public class MazeGenerator : MonoBehaviour
     public TextMeshProUGUI winTMP;
     public Animator playerAnimator;
 
-   
+
     public Transform cameraPivot;
     public Camera mainCamera;
 
-   
+
     public GameObject enemyPrefab;
     public Transform player;
 
-   
+
     public float loseGracePeriod = 4f;
 
 
@@ -40,11 +40,12 @@ public class MazeGenerator : MonoBehaviour
     public float spawnDistance = 5f;
 
     public float loseDistance = 1.5f;
+    public AudioSource bgmSource;
 
 
     private NavMeshSurface surface;
     private float wallSize = 3f;
-    private GameObject enemyInstance;     
+    private GameObject enemyInstance;
     private bool canDetectLose = false;
     private bool isGameOver = false;
 
@@ -67,7 +68,7 @@ public class MazeGenerator : MonoBehaviour
     {
         GenerateMaze();
 
-  
+
         surface.collectObjects = CollectObjects.Children;
         surface.useGeometry = NavMeshCollectGeometry.PhysicsColliders;
         surface.BuildNavMesh();
@@ -85,7 +86,7 @@ public class MazeGenerator : MonoBehaviour
         if (dist <= loseDistance)
         {
             isGameOver = true;
-           
+
             if (winUIText != null)
             {
                 winUIText.text = "You Lose!";
@@ -126,12 +127,13 @@ public class MazeGenerator : MonoBehaviour
         if (NavMesh.SamplePosition(spawnPos, out NavMeshHit hit, wallSize, NavMesh.AllAreas))
             spawnPos = hit.position;
 
-    
+
         enemyInstance = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
         var ec = enemyInstance.GetComponent<EnemyAI>();
-        if( ec != null)
+        if (ec != null)
         {
-            ec.target = player; 
+            ec.target = player;
+            ec.bgmSource = bgmSource;
         }
     }
 
