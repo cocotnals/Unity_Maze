@@ -29,11 +29,11 @@ public class MazeGenerator : MonoBehaviour
     public Camera mainCamera;
 
 
-    public GameObject enemyPrefab;
+    public GameObject enemy;
     public Transform player;
 
 
-    public float loseGracePeriod = 4f;
+    public float loseP = 4f;
 
 
 
@@ -46,7 +46,7 @@ public class MazeGenerator : MonoBehaviour
     private NavMeshSurface surface;
     private float wallSize = 3f;
     private GameObject enemyInstance;
-    private bool canDetectLose = false;
+    private bool detectLose = false;
     private bool isGameOver = false;
 
     private int[,] Maze;
@@ -66,7 +66,7 @@ public class MazeGenerator : MonoBehaviour
 
     void Start()
     {
-        GenerateMaze();
+        
 
 
         surface.collectObjects = CollectObjects.Children;
@@ -74,12 +74,12 @@ public class MazeGenerator : MonoBehaviour
         surface.BuildNavMesh();
 
         SpawnEnemyBehindPlayer();
-        Invoke(nameof(EnableLoseDetection), loseGracePeriod);
+        Invoke(nameof(loseDetect), loseP);
     }
 
     void Update()
     {
-        if (!canDetectLose || isGameOver || enemyInstance == null || player == null)
+        if (!detectLose || isGameOver || enemyInstance == null || player == null)
             return;
 
         float dist = Vector3.Distance(player.position, enemyInstance.transform.position);
@@ -97,21 +97,17 @@ public class MazeGenerator : MonoBehaviour
                 winTMP.text = "You Lose!";
                 winTMP.gameObject.SetActive(true);
             }
-            playerAnimator?.SetTrigger("Lose");
+            playerAnimator.SetTrigger("Lose");
             Time.timeScale = 0f;
         }
     }
 
-    private void EnableLoseDetection()
+    private void loseDetect()
     {
-        canDetectLose = true;
+        detectLose = true;
     }
 
-    void GenerateMaze()
-    {
-        CreateMazeGeometry();
-        SetupExitTrigger();
-    }
+  
 
     void SpawnEnemyBehindPlayer()
     {
@@ -119,7 +115,7 @@ public class MazeGenerator : MonoBehaviour
         if (enemyInstance != null)
             return;
 
-        if (enemyPrefab == null || player == null)
+        if (enemy == null || player == null)
             return;
 
         Vector3 spawnPos = player.position - player.forward * spawnDistance;
@@ -128,7 +124,7 @@ public class MazeGenerator : MonoBehaviour
             spawnPos = hit.position;
 
 
-        enemyInstance = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        enemyInstance = Instantiate(enemy, spawnPos, Quaternion.identity);
         var ec = enemyInstance.GetComponent<EnemyAI>();
         if (ec != null)
         {
@@ -137,6 +133,6 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
-    private void CreateMazeGeometry() { /* ... */ }
-    private void SetupExitTrigger() { /* ... */ }
+    //private void CreateMazeGeometry() { }
+    //private void SetupExitTrigger() { }
 }

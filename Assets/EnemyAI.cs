@@ -5,21 +5,21 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     private NavMeshAgent agent;
-    [HideInInspector] public Transform target;
+    public Transform target;
     private Animator anim;
 
-    [Header("공격 설정")]
+  
     public float attackRange = 2f;
     public float attackCooldown = 1.5f;
     private float lastAttackTime = -Mathf.Infinity;
     private MazeGenerator mazeGen;
 
-    [Header("BGM 설정")]
+
     public AudioSource bgmSource;
     public AudioClip attackBGM;       // 공격 시 BGM
-    public bool changeBGMOnAttack = true;
+    public bool chanebgmattack = true;
     private float spawnTime;
-    public float attackGracePeriod = 5f;
+    public float attackPer = 5f;
     private static bool globalAttackBGMPlayed = false;
 
     void Awake()
@@ -51,12 +51,12 @@ public class EnemyAI : MonoBehaviour
             lastAttackTime = Time.time;
 
 
-            if (changeBGMOnAttack && bgmSource != null && attackBGM != null && Time.time >= spawnTime + attackGracePeriod)
+            if (chanebgmattack && bgmSource != null && attackBGM != null && Time.time >= spawnTime + attackPer)
             {
-                Debug.Log("공격 트리거 실행됨!");
+              
                 bgmSource.clip = attackBGM;
                 bgmSource.Play();
-                changeBGMOnAttack = false;
+                chanebgmattack = false;
                 globalAttackBGMPlayed = true;
             }
         }

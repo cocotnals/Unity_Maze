@@ -6884,7 +6884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c3f1e69a5e44c4f804aa5ceca061c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostAmount: 0.5
+  boost: 0.5
 --- !u!1 &575534642
 GameObject:
   m_ObjectHideFlags: 0
@@ -9305,7 +9305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200f48013985b584d936f7b4967872f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winUIText: {fileID: 0}
   winTMP: {fileID: 2065155548}
   playerAnimator: {fileID: 770816365}
   cameraPivot: {fileID: 395492395}
@@ -17805,9 +17804,9 @@ MonoBehaviour:
   playerAnimator: {fileID: 770816365}
   cameraPivot: {fileID: 395492395}
   mainCamera: {fileID: 440320526}
-  enemyPrefab: {fileID: 4931210263514315050, guid: 9b53ca142c1e2964cad05ecd45d009b0, type: 3}
+  enemy: {fileID: 4931210263514315050, guid: 9b53ca142c1e2964cad05ecd45d009b0, type: 3}
   player: {fileID: 770816366}
-  loseGracePeriod: 10
+  loseP: 4
   spawnDistance: 5
   loseDistance: 1.5
   bgmSource: {fileID: 801874126}
@@ -18723,7 +18722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c3f1e69a5e44c4f804aa5ceca061c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostAmount: 0.5
+  boost: 0.5
 --- !u!1 &1355461325 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 277153064663283705, guid: 5f99a747b002f584c83677c5c67cfd20, type: 3}
@@ -18741,7 +18740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c3f1e69a5e44c4f804aa5ceca061c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostAmount: 0.5
+  boost: 0.5
 --- !u!1 &1363966998
 GameObject:
   m_ObjectHideFlags: 0
@@ -22134,7 +22133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c3f1e69a5e44c4f804aa5ceca061c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostAmount: 0.5
+  boost: 0.5
 --- !u!1 &1588522920
 GameObject:
   m_ObjectHideFlags: 0
@@ -28395,7 +28394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c3f1e69a5e44c4f804aa5ceca061c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostAmount: 0.5
+  boost: 0.5
 --- !u!1 &2029719552
 GameObject:
   m_ObjectHideFlags: 0

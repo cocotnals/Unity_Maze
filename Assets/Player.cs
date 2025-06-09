@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("이동 속도")]
+   
     public float moveSpeed = 3f;
 
-    [Header("회전 속도")]
+
     public float rotationSpeed = 360f;
 
     private Animator anim;
@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; // X/Z축 회전 고정
+        
     }
 
     void Update()
